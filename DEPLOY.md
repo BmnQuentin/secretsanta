@@ -14,6 +14,32 @@
 3. **Configuration Vite** vérifiée
    - `base: '/secretsanta/'` est correct pour votre repo
 
+4. **Configuration Yarn** ajustée
+   - Yarn PnP désactivé (utilisation de `node_modules` classique)
+   - Configuration Corepack pour utiliser Yarn 4.5.1
+
+## 💻 Développement local
+
+Ce projet utilise **Yarn 4.5.1** via Corepack. Pour utiliser les commandes Yarn :
+
+**Option 1 : Utiliser `corepack yarn` directement**
+```bash
+corepack yarn install
+corepack yarn dev
+corepack yarn build
+```
+
+**Option 2 : Activer Corepack dans votre shell** (une seule fois)
+```bash
+corepack enable
+# Puis vous pouvez utiliser yarn normalement
+yarn install
+yarn dev
+yarn build
+```
+
+> **Note** : Si vous obtenez une erreur de permissions avec `corepack enable`, utilisez `corepack yarn` directement ou ajoutez `corepack enable` à votre `~/.bashrc` ou `~/.zshrc`.
+
 ## 🚀 Étapes pour activer GitHub Pages
 
 1. **Activer GitHub Pages dans les paramètres du repo** :
