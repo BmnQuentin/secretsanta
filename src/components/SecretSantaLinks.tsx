@@ -2,7 +2,7 @@ import React from "react";
 import { DownloadSimple } from "@phosphor-icons/react";
 import { useTranslation } from "react-i18next";
 import { CopyButton } from "./CopyButton";
-import { generateAssignmentLink, generateCSV } from "../utils/links";
+import { generateAssignmentLink, generateCSV, slugify } from "../utils/links";
 import { Participant } from "../types";
 import { GeneratedPairs, generateGenerationHash } from "../utils/generatePairs";
 
@@ -30,14 +30,21 @@ export function SecretSantaLinks({ assignments, instructions, eventName, partici
     return a[0].localeCompare(b[0]);
   });
 
-  const handleExportCSV = () => {
-    const csvContent = generateCSV(adjustedPairings.map(([giver, receiver]) => [giver, receiver]));
+  const handleExportCSV = async () => {
+    const rows = await Promise.all(adjustedPairings.map(async ([giver, receiver, hint]): Promise<[string, string, string]> => [
+      giver,
+      receiver,
+      await generateAssignmentLink(giver, receiver, hint, instructions, eventName),
+    ]));
+
+    const csvContent = generateCSV(rows);
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'secret-santa-assignments.csv';
+    const slug = slugify(eventName ?? '');
+    a.download = slug ? `secret-santa-assignments-${slug}.csv` : 'secret-santa-assignments.csv';
     a.click();
 
     window.URL.revokeObjectURL(url);

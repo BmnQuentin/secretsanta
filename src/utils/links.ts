@@ -32,9 +32,19 @@ export async function generateAssignmentLink(giver: string, receiver: string, re
   return `${baseUrl}/pairing?${params.toString()}`;
 }
 
-export function generateCSV(assignments: [string, string][]) {
+export function generateCSV(assignments: [string, string, string][]) {
   const csvContent = assignments
-    .map(([giver, receiver]) => `${giver}\t${receiver}`)
+    .map(([giver, receiver, link]) => `${giver}\t${receiver}\t${link}`)
     .join('\n');
-  return `Giver\tReceiver\n${csvContent}`;
+  return `Giver\tReceiver\tLink\n${csvContent}`;
+}
+
+// "Noël 2026 en Famille !" -> "noel-2026-en-famille"
+export function slugify(text: string) {
+  return text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 } 
