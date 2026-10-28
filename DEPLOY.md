@@ -6,39 +6,23 @@
    - Déploiement automatique à chaque push sur `main`
    - Build avec Vite et déploiement sur GitHub Pages
 
-2. **Scripts npm/yarn** ajoutés dans `package.json`
-   - `yarn dev` : développement local
-   - `yarn build` : build de production
-   - `yarn preview` : prévisualisation du build
+2. **Scripts npm** dans `package.json`
+   - `npm run dev` : développement local
+   - `npm run build` : build de production
+   - `npm run preview` : prévisualisation du build
+   - `npm test` : tests
 
 3. **Configuration Vite** vérifiée
    - `base: '/secretsanta/'` est correct pour votre repo
 
-4. **Configuration Yarn** ajustée
-   - Yarn PnP désactivé (utilisation de `node_modules` classique)
-   - Configuration Corepack pour utiliser Yarn 4.5.1
-
 ## 💻 Développement local
 
-Ce projet utilise **Yarn 4.5.1** via Corepack. Pour utiliser les commandes Yarn :
+Ce projet utilise **npm** (Node.js 20 ou plus récent) :
 
-**Option 1 : Utiliser `corepack yarn` directement**
 ```bash
-corepack yarn install
-corepack yarn dev
-corepack yarn build
+npm install
+npm run dev
 ```
-
-**Option 2 : Activer Corepack dans votre shell** (une seule fois)
-```bash
-corepack enable
-# Puis vous pouvez utiliser yarn normalement
-yarn install
-yarn dev
-yarn build
-```
-
-> **Note** : Si vous obtenez une erreur de permissions avec `corepack enable`, utilisez `corepack yarn` directement ou ajoutez `corepack enable` à votre `~/.bashrc` ou `~/.zshrc`.
 
 ## 🚀 Étapes pour activer GitHub Pages
 

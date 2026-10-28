@@ -25,19 +25,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Setup Yarn
-        run: corepack prepare yarn@4.5.1 --activate
+          node-version: '24'
+          cache: npm
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

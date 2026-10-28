@@ -23,8 +23,7 @@ export const fr: Translations = {
     title: "Planificateur de Secret Santa",
     explanation: [
       "Bienvenue ! Cet outil est fait pour vous aider à organiser vos échanges de cadeaux. Listez simplement vos participants et nous vous constituerons aléatoirement des paires selon les règles que vous aurez définies.",
-      "Vous recevrez un lien unique pour chaque participant, que vous devrez lui partager (par email, Slack, etc). [<exampleLink>Exemple de lien</exampleLink>]",
-      "Pas de comptes, pas d'emails, pas de tracas, et le tout hébergé sur de simples <githubLink>GitHub Pages</githubLink> !",
+      "Vous recevrez un lien unique pour chaque participant, que vous devrez lui partager.",
     ].map(line => `<p>${line}</p>`).join(''),
     exampleLink: "Exemple de lien",
   },

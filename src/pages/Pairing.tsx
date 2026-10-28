@@ -8,20 +8,10 @@ import { MenuItem, SideMenu } from '../components/SideMenu';
 import { PageTransition } from '../components/PageTransition';
 import { ArrowLeft, Info } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
-import CryptoJS from 'crypto-js';
 import { Layout } from "../components/Layout";
 import { ReceiverData } from "../types";
 
 async function loadPairing(searchParams: URLSearchParams): Promise<[string, ReceiverData]> {
-  // Legacy pairings, not generated anymore; remove after 2025-01-01
-  if (searchParams.has(`name`) && searchParams.has(`key`) && searchParams.has(`pairing`)) {
-    const name = searchParams.get(`name`)!;
-    const key = searchParams.get(`key`)!;
-    const pairing = searchParams.get(`pairing`)!;
-
-    return [name, {name: CryptoJS.AES.decrypt(pairing, key).toString(CryptoJS.enc.Utf8)}];
-  }
-
   if (searchParams.has(`to`)) {
     const from = searchParams.get('from')!;
     const to = searchParams.get('to')!;

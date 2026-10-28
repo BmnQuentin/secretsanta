@@ -1,14 +1,29 @@
 # Secret Santa
 
-<img align="right" height="160" src="https://user-images.githubusercontent.com/1037931/87014534-92e21280-c1cc-11ea-9675-5f2c0f3c287f.png"/>
+<img align="right" height="160" src="./static/cats.png"/>
 
-Check it live on [mael.dev/secretsanta/](https://mael.dev/secretsanta/) 🎄
+Un outil pour organiser un échange de cadeaux Secret Santa : listez les participants, définissez éventuellement des règles (associations forcées ou exclues), puis partagez à chacun son lien secret. Pas de compte, pas d'email, aucun serveur : tout se passe dans le navigateur. 🎄
 
-Should you appreciate this tool so much that you'd like to thank me, you can either drop a friendly note in this repository's issues, or be a [one-time sponsor](https://github.com/sponsors/arcanis?frequency=one-time&sponsor=arcanis). Either would make my day 😊
+Projet d'origine créé par Maël Nison ([mael.dev/secretsanta](https://mael.dev/secretsanta/)).
+
+## Lancer en local
+
+Il faut Node.js 20 ou plus récent.
+
+```bash
+npm install
+npm run dev          # serveur de dev sur http://localhost:5173/secretsanta/
+```
+
+- Tests : `npm test`
+- Build de production : `npm run build` puis `npm run preview`
 
 <br/>
 
-## License (MIT)
+## Licence (MIT)
+
+Le texte ci-dessous est la licence d'origine, conservée en anglais car c'est la version qui fait foi.
+
 
 > **Copyright © 2015 Maël Nison**
 >
