@@ -1,7 +1,7 @@
 import { encryptText } from "./crypto";
 import { ReceiverData } from "../types";
 
-export async function generateAssignmentLink(giver: string, receiver: string, receiverHint?: string, instructions?: string) {
+export async function generateAssignmentLink(giver: string, receiver: string, receiverHint?: string, instructions?: string, eventName?: string) {
   // Use the base URL from Vite config (import.meta.env.BASE_URL)
   // BASE_URL is always defined by Vite and includes the base path from vite.config.ts
   // It always ends with a slash (e.g., '/secretsanta/' or '/')
@@ -20,6 +20,10 @@ export async function generateAssignmentLink(giver: string, receiver: string, re
     from: giver,
     to: encryptedReceiver,
   });
+
+  if (eventName?.trim()) {
+    params.set('event', eventName.trim());
+  }
 
   if (instructions?.trim()) {
     params.set('info', instructions.trim());

@@ -70,6 +70,9 @@ export const en = {
   },
   settings: {
     title: "Settings",
+    eventName: "Secret Santa Name",
+    eventNamePlaceholder: "e.g., Family Christmas 2026",
+    eventNameHelp: "Shown under the title of each participant's card (optional).",
     instructions: "Additional Instructions",
     instructionsPlaceholder: "e.g., budget, date, location...",
     instructionsHelp: "They will be shown to all participants on their assignment page. Keep it short: it increases the length of the links."

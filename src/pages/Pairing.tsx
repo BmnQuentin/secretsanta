@@ -37,12 +37,14 @@ export function Pairing() {
   const [error, setError] = useState<string | null>(null);
   const [assignment, setAssignment] = useState<[string, ReceiverData] | null>(null);
   const [instructions, setInstructions] = useState<string | null>(null);
+  const [eventName, setEventName] = useState<string | null>(null);
 
   useEffect(() => {
     const decryptReceiver = async () => {
       try {
         setAssignment(await loadPairing(searchParams));
         setInstructions(searchParams.get('info'));
+        setEventName(searchParams.get('event'));
       } catch (err) {
         console.error('Decryption error:', err);
         setError(t('pairing.error'));
@@ -81,6 +83,7 @@ export function Pairing() {
             <PostCard>
               <h1 className="text-3xl font-bold mb-6 text-center text-red-700">
                 {t('pairing.title')}
+                {eventName && <span className="block mt-2">{eventName}</span>}
               </h1>
               <p className="mb-6 text-center text-gray-600">
                 <Trans

@@ -9,11 +9,12 @@ import { GeneratedPairs, generateGenerationHash } from "../utils/generatePairs";
 interface SecretSantaLinksProps {
   assignments: GeneratedPairs;
   instructions?: string;
+  eventName?: string;
   participants: Record<string, Participant>;
   onGeneratePairs: () => void;
 }
 
-export function SecretSantaLinks({ assignments, instructions, participants, onGeneratePairs }: SecretSantaLinksProps) {
+export function SecretSantaLinks({ assignments, instructions, eventName, participants, onGeneratePairs }: SecretSantaLinksProps) {
   const { t } = useTranslation();
 
   const currentHash = generateGenerationHash(participants);
@@ -76,7 +77,7 @@ export function SecretSantaLinks({ assignments, instructions, participants, onGe
               {giver}:
             </span>
             <CopyButton
-              textToCopy={() => generateAssignmentLink(giver, receiver, hint, instructions)}
+              textToCopy={() => generateAssignmentLink(giver, receiver, hint, instructions, eventName)}
               className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center justify-center gap-2"
             >
               {t('links.copySecretLink')}

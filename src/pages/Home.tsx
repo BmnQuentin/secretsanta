@@ -84,6 +84,7 @@ export function Home() {
   const [participants, setParticipants] = useLocalStorage<Record<string, Participant>>('secretSantaParticipants', {}, migrateParticipants);
   const [assignments, setAssignments] = useLocalStorage<GeneratedPairs | null>('secretSantaAssignments', null, migrateAssignments);
   const [instructions, setInstructions] = useLocalStorage<string>('secretSantaInstructions', '');
+  const [eventName, setEventName] = useLocalStorage<string>('secretSantaEventName', '');
 
   const [selectedParticipantId, setSelectedParticipantId] = useState<string | null>(null);
   const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
@@ -183,6 +184,8 @@ export function Home() {
               onToggle={() => setOpenSection('settings')}
             >
               <Settings
+                eventName={eventName}
+                onChangeEventName={setEventName}
                 instructions={instructions}
                 onChangeInstructions={setInstructions}
               />
@@ -197,6 +200,7 @@ export function Home() {
                 <SecretSantaLinks
                   assignments={assignments}
                   instructions={instructions}
+                  eventName={eventName}
                   participants={participants}
                   onGeneratePairs={handleGeneratePairs}
                 />
